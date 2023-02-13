@@ -1,0 +1,53 @@
+### TypeScript
+
+npm install typescript@versao-especifica ----save-dev
+
+No projeto ja tem o `lite-server` instalado
+    Na pasta `dist` rodar `npm run server`
+
+O atributo `type="module"` indica para o navegador que o arquivo a carregado deve ser tratado com um módulo e não um script.
+
+ex: [<script type="module" src="js/app.js"></script>]
+
+Configuração do compilador
+
+Criar na raiz do projeto o arquivo `tsconfig.json`
+
+A propriedade `target` indica para o compilator tsc (TypeScript Compiler) para qual versão do Javascript o código escrito em TypeScript deve ser compilado. Isso significa que o resultado final será arquivos Javascript sem qualquer referência para a sintaxe do Typescript.
+
+```json
+{
+    "compilerOptions": {
+        "outDir": "dist/js",
+        "target": "ES6",
+        "noEmitOnError": true
+    },
+    "include": ["app/**/*"]
+}
+```
+
+Adicionar no `package.json` novo script
+```json
+  "scripts": {
+    "...",
+    "start": "concurrently \"npm run watch\" \"npm run server\"",
+    "compile": "tsc",
+    "watch": "tsc -w"
+  },
+```
+
+executar: `npm run start`
+
+
+
+Tudo o que for declarado dentro de um módulo estará confinado nesse módulo, ao menos que o desenvolvedor decida exportar uma ou mais funcionalidades.
+
+ex:
+```javascript
+export class Negociacao {
+    #data;
+    #quantidade;
+    #valor;
+    ...
+```
+
