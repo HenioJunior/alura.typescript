@@ -51,3 +51,16 @@ export class Negociacao {
     ...
 ```
 
+Criação da NegociacaoController;
+Criação das variáveis(inputData, ...)
+Criação do constructor que vai receber os elementos do HTML;
+  ```javascript
+    this.inputData = document.querySelector('#data');
+  ```
+Criação do método adiciona() que vai receber neste momento um console.log() das variáveis;
+
+Em app, eu instancio o `controller` e crio uma const `form` que receberá os dados do formulário no HTML;
+
+Criação de um evento do tipo `submit` para o `form` e para cada evento eu chamo o método `adiciona()`;
+
+Dentro do addEventListener(), não esquecer do método preventDefault();
