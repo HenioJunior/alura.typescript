@@ -68,10 +68,10 @@ Dentro do addEventListener(), não esquecer do método preventDefault();
 
 #### Tipagem
 
-As variáveis que vem do DOM são do tipo HTMLInputElement;
-
-Os dados chegam em string;
-Ao instanciar um `Date()` é necessária criar uma expressão regular, para trocar os '-' pela ',' e usar o método `replace(exp, ',')`
+As variáveis que vem do DOM são do tipo HTMLInputElement, mas o dados chegam em string;
+Sobre o `Date()`:
+A string passada pelo construtor deve ter o ano, mês e dia separados por vírgula.
+Para isso é necessário criar uma expressão regular, para trocar os '-' pela ',' e usar o método `replace(exp, ',')`
 Para os números fazer o `parseInt()` e `parseFloat()`;
 
 
