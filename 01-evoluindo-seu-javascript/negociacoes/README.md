@@ -20,7 +20,8 @@ A propriedade `target` indica para o compilator tsc (TypeScript Compiler) para q
     "compilerOptions": {
         "outDir": "dist/js",
         "target": "ES6",
-        "noEmitOnError": true
+        "noEmitOnError": true,
+        "noImplicitAny": true
     },
     "include": ["app/**/*"]
 }
