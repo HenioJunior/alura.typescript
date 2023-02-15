@@ -1,6 +1,19 @@
 ### TypeScript
 
-npm install typescript@versao-especifica ----save-dev
+Initial Setup
+mkdir typescript-starter
+cd typescript-starter
+
+Setup Node.js package.json
+npm init -y
+
+Add TypeScript as a dev dependency
+
+npm install typescript --save-dev
+
+
+
+###
 
 No projeto ja tem o `lite-server` instalado
     Na pasta `dist` rodar `npm run server`
@@ -11,7 +24,7 @@ ex: [<script type="module" src="js/app.js"></script>]
 
 Configuração do compilador
 
-Criar na raiz do projeto o arquivo `tsconfig.json`
+executar o comando `tsc --init` na raiz do projeto para a criação do arquivo `tsconfig.json`
 
 A propriedade `target` indica para o compilator tsc (TypeScript Compiler) para qual versão do Javascript o código escrito em TypeScript deve ser compilado. Isso significa que o resultado final será arquivos Javascript sem qualquer referência para a sintaxe do Typescript.
 
