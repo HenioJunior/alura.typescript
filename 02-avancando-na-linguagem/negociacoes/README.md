@@ -1,90 +1,18 @@
 ### TypeScript
 
-Initial Setup
-mkdir typescript-starter
-cd typescript-starter
+Sobre a renderização da tabela:
 
-Setup Node.js package.json
-npm init -y
+No `index.htm` logo abaixo do formulário, criar somente uma `div`, pois ela vai receber a renderização do template;
 
-Add TypeScript as a dev dependency
+Em NegociacoesView, criar um constructor que vai receber como parâmetro um seletor CSS (id da div criada acima);
 
-npm install typescript --save-dev
+Criar um atributo `elemento: HTMLElement;`
 
+Esse `elemento` vai receber no construtor o `querySelector(seletor)`;
 
+Para quê serve o método template? Declarar o template da minha view.
 
-###
+Criar o método `update()` para renderizar esse template em um elemento DOM(`this.elemento.innerHTML = this.template();`) que eu captei através do meu construtor, passando o seletor e pegando com o `querySeletor`.
 
-No projeto ja tem o `lite-server` instalado
-    Na pasta `dist` rodar `npm run server`
-
-O atributo `type="module"` indica para o navegador que o arquivo a carregado deve ser tratado com um módulo e não um script.
-
-ex: [<script type="module" src="js/app.js"></script>]
-
-Configuração do compilador
-
-executar o comando `tsc --init` na raiz do projeto para a criação do arquivo `tsconfig.json`
-
-A propriedade `target` indica para o compilator tsc (TypeScript Compiler) para qual versão do Javascript o código escrito em TypeScript deve ser compilado. Isso significa que o resultado final será arquivos Javascript sem qualquer referência para a sintaxe do Typescript.
-
-```json
-{
-    "compilerOptions": {
-        "outDir": "dist/js",
-        "target": "ES6",
-        "noEmitOnError": true,
-        "noImplicitAny": true
-    },
-    "include": ["app/**/*"]
-}
-```
-
-Adicionar no `package.json` novo script
-```json
-  "scripts": {
-    "...",
-    "start": "concurrently \"npm run watch\" \"npm run server\"",
-    "compile": "tsc",
-    "watch": "tsc -w"
-  },
-```
-
-executar: `npm run start`
-
-
-
-Tudo o que for declarado dentro de um módulo estará confinado nesse módulo, ao menos que o desenvolvedor decida exportar uma ou mais funcionalidades.
-
-ex:
-```javascript
-export class Negociacao {
-    #data;
-    #quantidade;
-    #valor;
-    ...
-```
-
-Criação da NegociacaoController;
-Criação das variáveis(inputData, ...)
-Criação do constructor que vai receber os elementos do HTML;
-  ```javascript
-    this.inputData = document.querySelector('#data');
-  ```
-Criação do método adiciona() que vai receber neste momento um console.log() das variáveis;
-
-Em app, eu instancio o `controller` e crio uma const `form` que receberá os dados do formulário no HTML;
-
-Criação de um evento do tipo `submit` para o `form` e para cada evento eu chamo o método `adiciona()`;
-
-Dentro do addEventListener(), não esquecer do método preventDefault();
-
-#### Tipagem
-
-As variáveis que vem do DOM são do tipo HTMLInputElement, mas o dados chegam em string;
-Sobre o `Date()`:
-A string passada pelo construtor deve ter o ano, mês e dia separados por vírgula.
-Para isso é necessário criar uma expressão regular, para trocar os '-' pela ',' e usar o método `replace(exp, ',')`
-Para os números fazer o `parseInt()` e `parseFloat()`;
-
+No Controller vou criar uma properties `negociacoesView` que vai receber o seletor criado no HTML e no constructor eu chamo o método `update()`;
 
