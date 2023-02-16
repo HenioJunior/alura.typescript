@@ -10,6 +10,8 @@ export default class NegociacaoController {
     private negociacoes = new Negociacoes();
     private negociacoesView = new NegociacoesView('#negociacoesView');
     private mensagemView = new MensagemView('#mensagemView');
+    private SABADO = 6;
+    private DOMINGO = 0;
 
     constructor() {
         this.inputData = document.querySelector('#data');
@@ -19,10 +21,19 @@ export default class NegociacaoController {
     }
 
     public adiciona(): void {
-      const negociacao = this.criaNegociacao();
+        const negociacao = this.criaNegociacao();
+        if (!this.ehDiaUtil(negociacao.data)) {
+            this.mensagemView
+                .update('As negociações só podem ser realizadas em dias úteis.')
+            return ;
+        }
         this.negociacoes.adiciona(negociacao);
         this.limpaFormulario();
         this.atualizaView();
+    }
+
+    private ehDiaUtil(data: Date):boolean {
+        return data.getDay() > this.DOMINGO && data.getDay() < this.SABADO
     }
 
     private criaNegociacao(): Negociacao {

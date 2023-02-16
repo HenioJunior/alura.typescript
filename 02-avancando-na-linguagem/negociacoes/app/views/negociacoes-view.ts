@@ -30,6 +30,7 @@ export class NegociacoesView extends View<Negociacoes> {
     }
 
     private formatarData(data: Date): string {
-        return new Intl.DateTimeFormat('pt-BR').format(data)
+        //return new Intl.DateTimeFormat('pt-BR').format(data)
+        return new Intl.DateTimeFormat().format(data)
     }
 }
