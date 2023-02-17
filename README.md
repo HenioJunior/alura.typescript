@@ -1,4 +1,2 @@
-# TypeScript
+## 02-avancando-na-linguagem
 
-01-evoluindo-seu-javascript<br>
-02-avancando-na-linguagem
