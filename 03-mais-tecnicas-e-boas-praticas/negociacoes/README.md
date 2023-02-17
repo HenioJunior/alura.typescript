@@ -61,6 +61,66 @@ O que eu vou fazer? Nós sabemos que todo array tem o `join`. Eu vou dizer o seg
 
 Diz para o compilador TSC que pare de assumir implicitamente o tipo null para todos os tipos da aplicação. Caso null faça sentido, o desenvolvedor deve deixar isso explícito em seu código. Inclusive o StrictNullChecks obrigará o desenvolvedor a tratar todos os pontos de acesso a valores null em sua aplicação, forçando que o desenvolvedor pondere com cuidado cada cenário. 
 
+## Curso 03
+
+Decorators
+
+Em tsconfig.json, é necessário habilitar  `"experimentalDecorators": true`
+
+Criação da função logarTempoDeExecucao();
+
+Por ser um módulo, é necessário exportar;
+
+```javascript
+export function logarTempoDeExecucao() {
+    //decorator
+    return function(
+        /* 
+        Se você coloca o decorator no método estático, esse target é a função construtora da classe.
+        
+        Se você coloca esse decorator no método que não é estático, ele vai te retornar o prototype daquela classe. Só lembrando aqui rapidamente que todo o sistema de herança do Java Script é baseado em prototipação
+
+        Você tem uma instância de uma classe e eu chamo o método, se o método não existe, ela pergunta: “Beleza, eu não tenho, mas o prototype tem?”. Aí vai e tenta achar uma no prototype. Se tiver, é porque eu herdei, então ganho esse prototype e ele vai executar do prototype.
+
+        Se o prototype não tiver, ele vai perguntar: “Meu prototype tem?” e, se não tiver, ele vai perguntar: “O prototype do prototype do prototype” e se ninguém tiver lá na cadeia de herança do método, eu vou ter um erro de execução.
+        */
+        target: any,
+       
+       /* 
+       Segundo, o próprio propertyKey já é legal, porque ele é me dá o nome do método como string que foi decorado.
+       */
+
+        propertyKey: string,
+
+        /* 
+        E o PropertyDescriptor é muito especial, ele sabe tudo sobre o método que queremos executar, que queremos modificar, ele tem uma referência para o método original.
+        */
+        
+        descriptor: PropertyDescriptor
+    ) {
+        const metodoOriginal = descriptor.value;
+        descriptor.value = function () {
+            const t1 = performance.now();
+            
+            const t2 = performance.now();
+
+            console.log(`${propertyKey}, tempo de execução: ${(t2 - t1) / 1000} segundos.`)
+        }
+
+    }
+}
+```
+
+```javascript
+  @logarTempoDeExecucao()//Neste ponto eu chamo a função que contém o decorator...
+    public adiciona(): void {...}
+```
+
+
+
+
+
+
 
 
 

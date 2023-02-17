@@ -1,3 +1,4 @@
+import { logarTempoDeExecucao } from "../decorators/logar-tempo-de-execucao.js";
 import { DiasDaSemana } from "../enums/dias-da-semana.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
@@ -13,14 +14,14 @@ export default class NegociacaoController {
     private mensagemView = new MensagemView('#mensagemView');
 
     constructor() {
-        this.inputData = document.querySelector('#data')as HTMLInputElement;
-        this.inputQuantidade = document.querySelector('#quantidade')as HTMLInputElement;
-        this.inputValor = document.querySelector('#valor')as HTMLInputElement;
+        this.inputData = document.querySelector('#data') as HTMLInputElement;
+        this.inputQuantidade = document.querySelector('#quantidade') as HTMLInputElement;
+        this.inputValor = document.querySelector('#valor') as HTMLInputElement;
         this.negociacoesView.update(this.negociacoes);
     }
 
+    @logarTempoDeExecucao()
     public adiciona(): void {
-        const t1 = performance.now();
         const negociacao = Negociacao.criaDeHTML(
             this.inputData.value,
             this.inputQuantidade.value,
@@ -32,12 +33,10 @@ export default class NegociacaoController {
                 .update('As negociações só podem ser realizadas em dias úteis.')
             return;
         }
-        
+
         this.negociacoes.adiciona(negociacao);
         this.limpaFormulario();
         this.atualizaView();
-        const t2 = performance.now();
-        console.log(`Tempo de execução do método adiciona: ${(t2 - t1)/1000} segundos`)
     }
 
     private ehDiaUtil(data: Date): boolean {
