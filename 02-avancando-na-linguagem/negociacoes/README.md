@@ -57,6 +57,10 @@ Mas tem um problema. Se eu fizer isso, o retorno vai ser um array. E se eu dou u
 
 O que eu vou fazer? Nós sabemos que todo array tem o `join`. Eu vou dizer o seguinte: pega a minha lista, converte cada modelo que é um objeto JavaScript em uma string. Depois que você me retornar esse array onde cada item da lista é um string, junta todo mundo numa única string, grande, e o separador entre eles vai ser o espaço.
 
+3. StrictNullCheck
+
+Diz para o compilador TSC que pare de assumir implicitamente o tipo null para todos os tipos da aplicação. Caso null faça sentido, o desenvolvedor deve deixar isso explícito em seu código. Inclusive o StrictNullChecks obrigará o desenvolvedor a tratar todos os pontos de acesso a valores null em sua aplicação, forçando que o desenvolvedor pondere com cuidado cada cenário. 
+
 
 
 
