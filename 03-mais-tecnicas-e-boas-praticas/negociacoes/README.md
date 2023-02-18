@@ -116,6 +116,14 @@ export function logarTempoDeExecucao() {
     public adiciona(): void {...}
 ```
 
+#### Ordem de execução dos Decorators
+
+Quando o meu `inspect` é executado, ele vai chamar o método original, porém o método original já está com decorator. Então eu estou executando esse código, disparando o outro decorator e esse decorator fica suspenso aguardando o método ser retornado.
+
+E depois exibe o retorno, então a ordem é primeiro `@inspect()` e segundo `@logarTempoDeExecução(true)` mas na hora dele modificar a classe, ele modifica primeiro @logarTempoDeExecução(true), aplica esse decorator no método e esse método está decorado, depois ele vai decorar esse método com o @inspect(), então ele primeiro modifica o método.
+
+Primeiro método a ser modificado, o update vai ser modificado com decorator @logarTempoDeExecução(true), depois ele vai ser modificado com @inspect(). Ou seja, quando o inspect rodar, ele vai estar rodando, porque ele vai ser o primeiro, mas ele vai estar rodando na hora de processar sobre o método que já foi decorado com @logarTempoDeExecução(true), então você pode adotar aqui se eu voltar para cá, o primeiro está sendo o @inspect.
+
 
 
 
