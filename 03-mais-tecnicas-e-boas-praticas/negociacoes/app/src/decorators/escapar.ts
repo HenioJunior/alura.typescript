@@ -13,7 +13,7 @@ export function escapar() {
 
             if (typeof retorno === 'string') {
 
-                console.log(`@@@ escapar em ação na classe ${this.constructor.name} para o método ${propertyKey} `)
+                /* console.log(`@@@ escapar em ação na classe ${this.constructor.name} para o método ${propertyKey} `) */
 
                 retorno.replace(/<script>[\s\S]*?<\/script>/, '');
             }
