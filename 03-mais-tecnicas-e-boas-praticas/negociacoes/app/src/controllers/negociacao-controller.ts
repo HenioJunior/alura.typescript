@@ -11,20 +11,24 @@ export default class NegociacaoController {
     
     @domInjector('#data')
     private inputData: HTMLInputElement;
+    
     @domInjector('#quantidade')
     private inputQuantidade: HTMLInputElement;
+    
     @domInjector('#valor')
     private inputValor: HTMLInputElement;
     
     private negociacoes = new Negociacoes();
+    
     private negociacoesView = new NegociacoesView('#negociacoesView');
+    
     private mensagemView = new MensagemView('#mensagemView');
 
     constructor() {
         this.negociacoesView.update(this.negociacoes);
     }
 
-    @inspect
+    //@inspect
     @logarTempoDeExecucao()
     public adiciona(): void {
         const negociacao = Negociacao.criaDeHTML(

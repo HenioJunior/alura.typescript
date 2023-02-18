@@ -7,15 +7,15 @@
 
         descriptor.value = function (...args: any[]) {
             
-            console.log("*** Inspect ***")
+            console.log("****** Inspect")
 
-            console.log(`--- Método: ${propertyKey}`);
+            console.log(`****** Método: ${propertyKey}`);
 
-            console.log(`------ Parâmetros: ${JSON.stringify(args)}`);
+            console.log(`****** Parâmetros: ${JSON.stringify(args)}`);
 
             const retorno = metodoOriginal.apply(this, args);
 
-            console.log(`*** Retorno: ${JSON.stringify(retorno)}`)
+            console.log(`****** Retorno: ${JSON.stringify(retorno)}`)
 
             return retorno;
         }
