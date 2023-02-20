@@ -8,20 +8,20 @@ import { MensagemView } from "../views/mensagem-view.js";
 import { NegociacoesView } from "../views/negociacoes-view.js";
 
 export default class NegociacaoController {
-    
+
     @domInjector('#data')
     private inputData: HTMLInputElement;
-    
+
     @domInjector('#quantidade')
     private inputQuantidade: HTMLInputElement;
-    
+
     @domInjector('#valor')
     private inputValor: HTMLInputElement;
-    
+
     private negociacoes = new Negociacoes();
-    
+
     private negociacoesView = new NegociacoesView('#negociacoesView');
-    
+
     private mensagemView = new MensagemView('#mensagemView');
 
     constructor() {
@@ -46,6 +46,10 @@ export default class NegociacaoController {
         this.negociacoes.adiciona(negociacao);
         this.limpaFormulario();
         this.atualizaView();
+    }
+
+    public importaDados(): void {
+        console.warn('oi');
     }
 
     private ehDiaUtil(data: Date): boolean {
