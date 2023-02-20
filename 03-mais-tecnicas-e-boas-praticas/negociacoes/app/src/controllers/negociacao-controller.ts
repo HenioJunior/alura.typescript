@@ -49,7 +49,23 @@ export default class NegociacaoController {
     }
 
     public importaDados(): void {
-        console.warn('oi');
+        fetch('http://localhost:8080/dados')
+            .then(res => res.json())
+            .then((dados: any[]) => {
+                return dados.map(dadosDeHoje => {
+                    return new Negociacao(
+                        new Date(), 
+                        dadosDeHoje.vezes, 
+                        dadosDeHoje.montante
+                    )
+                })
+            })
+            .then(negociacoesDeHoje => {
+                for(let negociacao of negociacoesDeHoje) {
+                    this.negociacoes.adiciona(negociacao)
+                }
+                this.negociacoesView.update(this.negociacoes);
+            })
     }
 
     private ehDiaUtil(data: Date): boolean {
