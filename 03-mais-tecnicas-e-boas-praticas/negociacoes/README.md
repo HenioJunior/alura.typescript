@@ -124,6 +124,14 @@ E depois exibe o retorno, então a ordem é primeiro `@inspect()` e segundo `@lo
 
 Primeiro método a ser modificado, o update vai ser modificado com decorator @logarTempoDeExecução(true), depois ele vai ser modificado com @inspect(). Ou seja, quando o inspect rodar, ele vai estar rodando, porque ele vai ser o primeiro, mas ele vai estar rodando na hora de processar sobre o método que já foi decorado com @logarTempoDeExecução(true), então você pode adotar aqui se eu voltar para cá, o primeiro está sendo o @inspect.
 
+#### Debug
+
+Em `tsconfig.json`, incluir a linha `"sourceMap": true`;
+ex: Em dist, após a ativação, é gerado o arquivo `negociacao-controller.js.map`;
+Com isso eu consigo em tempo de desenvolvimento colocar os breakpoints no `controller.ts`;
+No chrome `ctrl + p` para abrir o controller.ts 
+
+
 
 
 
