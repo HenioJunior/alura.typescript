@@ -52,7 +52,16 @@ export default class NegociacaoController {
     }
 
     public importaDados(): void {
-        this.negociacoesService.obterNegociacoesDoDia()
+        this.negociacoesService
+            .obterNegociacoesDoDia()//recebi as negociações do dia;
+            .then(negociacoesDeHoje => { //já tenho uma lista de negociações convertidas;
+                return negociacoesDeHoje.filter(negociacoesDeHoje => {//preciso filtrar, não pode ter negociações que já existam na lista de negociações;
+                    return !this.negociacoes//se for v vai pra lista, senão não vai...(por isso o !, para que não entre)
+                    .lista()
+                    .some(negociacao => negociacao//lista, vc tem alguma negociação que seja igual a negociação que eu quero filtrar?
+                            .ehIgual(negociacoesDeHoje))//para cada interação do filter tenho que retornar se é (v ou f)
+                });
+            })
             .then(negociacoesDeHoje => {
                 for (let negociacao of negociacoesDeHoje) {
                     this.negociacoes.adiciona(negociacao)
