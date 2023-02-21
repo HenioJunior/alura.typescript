@@ -32,7 +32,7 @@ export default class NegociacaoController {
     }
 
     //@inspect
-    @logarTempoDeExecucao()
+    //@logarTempoDeExecucao()
     public adiciona(): void {
         const negociacao = Negociacao.criaDeHTML(
             this.inputData.value,
@@ -47,6 +47,8 @@ export default class NegociacaoController {
         }
 
         this.negociacoes.adiciona(negociacao);
+        console.log(negociacao.paraTexto())
+        console.log(this.negociacoes.paraTexto())
         this.limpaFormulario();
         this.atualizaView();
     }

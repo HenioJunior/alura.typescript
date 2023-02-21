@@ -5,6 +5,14 @@ export class Negociacao {
         public readonly _quantidade: number,
         public readonly _valor: number){}
 
+    public static criaDeHTML(dataString: string, quantidadeString: string, valorString: string) {
+        const exp = /-/g;
+        const data = new Date(dataString.replace(exp, ','));
+        const quantidade = parseInt(quantidadeString);
+        const valor = parseFloat(valorString);
+        return new Negociacao(data, quantidade, valor);
+    }
+
     get data():Date {
         const data = new Date(this._data.getTime());
         return data;
@@ -14,11 +22,11 @@ export class Negociacao {
         return this._valor * this._quantidade;
     }
 
-    public static criaDeHTML(dataString: string, quantidadeString: string, valorString: string) {
-        const exp = /-/g;
-        const data = new Date(dataString.replace(exp, ','));
-        const quantidade = parseInt(quantidadeString);
-        const valor = parseFloat(valorString);
-        return new Negociacao(data, quantidade, valor);
+    public paraTexto(): string {
+        return `
+            Data: ${this.data},
+            Quantidade: ${this._quantidade},
+            Valor: ${this._valor}
+        `
     }
 }
