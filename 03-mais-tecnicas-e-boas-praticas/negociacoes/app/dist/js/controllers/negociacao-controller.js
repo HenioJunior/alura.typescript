@@ -9,6 +9,7 @@ import { logarTempoDeExecucao } from "../decorators/logar-tempo-de-execucao.js";
 import { DiasDaSemana } from "../enums/dias-da-semana.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
+import { NegociacoesService } from "../services/negociacoes-service.js";
 import { MensagemView } from "../views/mensagem-view.js";
 import { NegociacoesView } from "../views/negociacoes-view.js";
 export default class NegociacaoController {
@@ -16,6 +17,7 @@ export default class NegociacaoController {
         this.negociacoes = new Negociacoes();
         this.negociacoesView = new NegociacoesView('#negociacoesView');
         this.mensagemView = new MensagemView('#mensagemView');
+        this.negociacoesService = new NegociacoesService;
         this.negociacoesView.update(this.negociacoes);
     }
     adiciona() {
@@ -30,13 +32,7 @@ export default class NegociacaoController {
         this.atualizaView();
     }
     importaDados() {
-        fetch('http://localhost:8080/dados')
-            .then(res => res.json())
-            .then((dados) => {
-            return dados.map(dadosDeHoje => {
-                return new Negociacao(new Date(), dadosDeHoje.vezes, dadosDeHoje.montante);
-            });
-        })
+        this.negociacoesService.obterNegociacoesDoDia()
             .then(negociacoesDeHoje => {
             for (let negociacao of negociacoesDeHoje) {
                 this.negociacoes.adiciona(negociacao);
