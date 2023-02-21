@@ -1,9 +1,13 @@
-export class Negociacao {
+import { Imprimivel } from "../utils/imprimivel.js";
+
+export class Negociacao extends Imprimivel {
 
     constructor(
         private _data: Date,
         public readonly _quantidade: number,
-        public readonly _valor: number){}
+        public readonly _valor: number){
+            super();
+        }
 
     public static criaDeHTML(dataString: string, quantidadeString: string, valorString: string) {
         const exp = /-/g;
