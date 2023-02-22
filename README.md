@@ -1,4 +1,6 @@
-Initial Setup
+###TypeScript
+
+Initial Setup</br>
 mkdir typescript-starter
 cd typescript-starter
 
@@ -9,9 +11,6 @@ Add TypeScript as a dev dependency
 
 npm install typescript --save-dev
 
-
-
-###
 
 No projeto ja tem o `lite-server` instalado
     Na pasta `dist` rodar `npm run server`
