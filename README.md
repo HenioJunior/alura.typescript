@@ -1,29 +1,28 @@
 ###TypeScript
 
 Initial Setup</br>
-mkdir typescript-starter
-cd typescript-starter
+mkdir typescript-starter</br>
+cd typescript-starter</br>
 
-Setup Node.js package.json
-npm init -y
+Criando Node.js package.json</br>
+`npm init -y`</br>
 
-Add TypeScript as a dev dependency
+Add TypeScript as a dev dependency</br>
+`npm install typescript --save-dev`
 
-npm install typescript --save-dev
-
-
-No projeto ja tem o `lite-server` instalado
-    Na pasta `dist` rodar `npm run server`
-
-O atributo `type="module"` indica para o navegador que o arquivo a carregado deve ser tratado com um módulo e não um script.
-
+No projeto, se necessário, instalar o `lite-server`</br>
+ 
+Na tag <script> atributo `type="module"` indica para o navegador que o arquivo a ser carregado deve ser tratado com um módulo e não um script.
 ex: [<script type="module" src="js/app.js"></script>]
 
-Configuração do compilador
+Configuração do compilador</br>
+    Executar o comando `tsc --init` na raiz do projeto para a criação do arquivo `tsconfig.json`
 
-executar o comando `tsc --init` na raiz do projeto para a criação do arquivo `tsconfig.json`
+A propriedade `target` indica para o compilator tsc (TypeScript Compiler) para qual versão do Javascript o código escrito em TypeScript deve ser compilado.</br>
 
-A propriedade `target` indica para o compilator tsc (TypeScript Compiler) para qual versão do Javascript o código escrito em TypeScript deve ser compilado. Isso significa que o resultado final será arquivos Javascript sem qualquer referência para a sintaxe do Typescript.
+Isso significa que o resultado final será arquivos Javascript sem qualquer referência para a sintaxe do Typescript.
+
+Na pasta app rodar `npm run server`
 
 ```json
 {
